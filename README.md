@@ -47,7 +47,7 @@ Classe Main - récupérer une entrée de la table référencée dans l'unité de
     
 ## Opération CREATE
 
-Classe Personne :
+### Classe Personne
 
         import javax.persistence.*;
         
@@ -71,21 +71,20 @@ Classe Personne :
             // Getters & setters
         }
 
-### Techniques de jonction
-#### Avec une clé étrangère :
+Jonction avec une clé étrangère :
 
         @OneToOne(cascade = CascadeType.ALL)
         @JoinColumn(name = "col_id_login", referencedColumnName="Id_Login")
         
-#### Avec une clé primaire partagée :
+Jonction avec une clé primaire partagée :
 
         @OneToOne(mappedBy="perso", cascade = CascadeType.ALL)
 
-#### Avec une jonction de tables :
+Jonction de tables :
 
 
 
-Classe Login :
+### Classe Login
 
         import javax.persistence.*;
 
@@ -109,13 +108,12 @@ Classe Login :
             // Getters & setters
         }
   
-### Techniques de jonction
-#### Relation 1 à 1 avec une clé étrangère :
+Relation 1 à 1 avec une clé étrangère :
 
         @OneToOne(mappedBy = "login")
         
-#### Relation 1 à 1 avec une clé primaire partagée :
+Relation 1 à 1 avec une clé primaire partagée :
 
         @OneToOne @MapsId
 
-#### Avec une jonction de tables :
+Jonction de tables :
