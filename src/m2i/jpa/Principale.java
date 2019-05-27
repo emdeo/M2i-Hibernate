@@ -12,7 +12,7 @@ public class Principale {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin(); // Signaler le début des échanges avec la BDD
 		
-//		OPERATION READ : récupérer une entrée de la table stockée à "jdbc:mysql://localhost:3306/jpa_formation?serverTimezone=UTC"
+//		OPERATION READ : récupérer une entrée de la table référencée dans l'unité de persistance "AdeliumService"
 //		Personne2 per = em.find(Personne2.class, 101);
 //		System.out.println(per);
 		
@@ -20,12 +20,12 @@ public class Principale {
 		Personne2 per = new Personne2();
 		Login log = new Login();
 		
-		per.setFirst_Name("Bernard");
-		per.setLast_Name("Bravo");
+		per.setFirst_Name("Carole");
+		per.setLast_Name("Charly");
 		per.setLogin(log);
 		
-		log.setUser("babar@free.net");
-		log.setPwd("babibu");
+		log.setUser("cacho@free.net");
+		log.setPwd("caca");
 		log.setRole("user");
 		log.setPersonne(per);
 		

@@ -2,6 +2,7 @@ package m2i.jpa;
 
 import javax.persistence.*;
 
+// Une entité est une classe persistante
 @Entity
 public class Login {
 
@@ -11,7 +12,9 @@ public class Login {
 	private String Pwd;
 	private String Role;
 	
-	@OneToOne(mappedBy = "login")
+//	TECHNIQUES DE JONCTION (3 AU CHOIX) :
+//	@OneToOne(mappedBy = "login")	// Relation 1 à 1 avec une clé étrangère
+	@OneToOne @MapsId				// Relation 1 à 1 avec  une clé primaire partagée
 	private Personne2 perso;
 	
 	public Login() {

@@ -2,6 +2,7 @@ package m2i.jpa;
 
 import javax.persistence.*;
 
+// Une entité est une classe persistante
 @Entity
 public class Personne2 {
 	
@@ -10,9 +11,13 @@ public class Personne2 {
 	private String First_Name;
 	private String Last_Name;
 	
+//	TECHNIQUES DE JONCTION (3 AU CHOIX) :
 //	Nom de la colonne clé étrangère dans la table Personne2
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "col_id_login", referencedColumnName="Id_Login")
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "col_id_login", referencedColumnName="Id_Login")
+	
+//	Nom de la colonne clé primaire
+	@OneToOne(mappedBy="perso", cascade = CascadeType.ALL)
     private Login login ;
 
 	/**
