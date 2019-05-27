@@ -2,8 +2,8 @@
 
 ## Table des matières
 1. [Créer une unité de persistance](#créer-une-unité-de-persistance)
-2. [Opération READ (.find)](#opération-read)
-3. [Opération CREATE (.persist)](#opération-create)
+2. [Opération READ](#opération-read)
+3. [Opération CREATE](#opération-create)
 
 ## Créer une unité de persistance
 
@@ -38,14 +38,18 @@ Classe Main - démarrer les échanges avec la BDD :
     em.getTransaction().begin(); // Signaler le début des échanges avec la BDD
     em.getTransaction().commit(); // Signaler la fin des échanges avec la BDD
 
-## Opération READ (.find)
+## Opération READ
+
+On l'utilise avec la méthode .find()
 
 Classe Main - récupérer une entrée de la table référencée dans l'unité de persistance :
 
     Personne per = em.find(Personne.class, 101);
     System.out.println(per);
     
-## Opération CREATE (.persist)
+## Opération CREATE
+
+On l'utilise avec la méthode .persist()
 
 ### Classe Main
 
