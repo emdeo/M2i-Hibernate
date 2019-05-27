@@ -36,11 +36,14 @@ Classe Main - démarrer les échanges avec la BDD :
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdeliumService");
     EntityManager em = emf.createEntityManager();
     em.getTransaction().begin(); // Signaler le début des échanges avec la BDD
+    
+    /* Code ici */
+    
     em.getTransaction().commit(); // Signaler la fin des échanges avec la BDD
 
 ## Opération READ
 
-On l'utilise avec la méthode .find()
+On l'utilise avec la méthode **.find()**
 
 Classe Main - récupérer une entrée de la table référencée dans l'unité de persistance :
 
@@ -49,7 +52,7 @@ Classe Main - récupérer une entrée de la table référencée dans l'unité de
     
 ## Opération CREATE
 
-On l'utilise avec la méthode .persist()
+On l'utilise avec la méthode **.persist()**
 
 ### Classe Main
 
