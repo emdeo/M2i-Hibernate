@@ -70,6 +70,7 @@ On l'utilise avec la méthode **.persist()**
     log.setPwd("caca");
     log.setRole("user");
     log.setPersonne(per);
+    
     em.persist(per);
 
 ### Classe Personne
