@@ -48,7 +48,6 @@ On l'utilise avec la méthode **.find()**
 Classe Main - récupérer une entrée de la table référencée dans l'unité de persistance :
 
     Personne per = em.find(Personne.class, 101);
-    System.out.println(per);
     
 ## Opération CREATE
 
@@ -56,52 +55,51 @@ On l'utilise avec la méthode **.persist()**
 
 ### Classe Main
 
-		Personne per = new Personne();
-		Login log = new Login();
-		
-		per.setFirst_Name("Carole");
-		per.setLast_Name("Charly");
-		per.setLogin(log);
-		
-		log.setUser("cacho@free.net");
-		log.setPwd("caca");
-		log.setRole("user");
-		log.setPersonne(per);
-		
-		em.persist(per);
+    Personne per = new Personne();
+    Login log = new Login();
+    
+    per.setFirst_Name("Carole");
+    per.setLast_Name("Charly");
+    per.setLogin(log);
+    
+    log.setUser("cacho@free.net");
+    log.setPwd("caca");
+    log.setRole("user");
+    log.setPersonne(per);
+    em.persist(per);
 
 ### Classe Personne
 
-        import javax.persistence.*;
-        
-        // Une entité est une classe persistante
-        @Entity
-        public class Personne {
+    import javax.persistence.*;
+    
+    // Une entité est une classe persistante
+    @Entity
+    public class Personne {
+    
+	    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+	    private int Id;
+	    private String First_Name;
+	    private String Last_Name;
 
-            @Id @GeneratedValue(strategy = GenerationType.AUTO)
-            private int Id;
-            private String First_Name;
-            private String Last_Name;
+	    // JONCTION DES TABLES (3 techniques au choix, voir ci-dessous)
+	    private Login login ;
 
-            // JONCTION DES TABLES (3 techniques au choix, voir ci-dessous)
-            private Login login ;
-            
-            // Constructeur VIDE
-            public Personne() {
-                super();
-            }
-            
-            // Getters & setters
-        }
+	    // Constructeur VIDE
+	    public Personne() {
+		    super();
+	    }
+
+	    // Getters & setters
+    }
 
 Jonction avec une clé étrangère :
 
-        @OneToOne(cascade = CascadeType.ALL)
-        @JoinColumn(name = "col_id_login", referencedColumnName="Id_Login")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "col_id_login", referencedColumnName="Id_Login")
         
 Jonction avec une clé primaire partagée :
 
-        @OneToOne(mappedBy="perso", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy="perso", cascade = CascadeType.ALL)
 
 Jonction de tables :
 
@@ -109,34 +107,36 @@ Jonction de tables :
 
 ### Classe Login
 
-        import javax.persistence.*;
 
-        // Une entité est une classe persistante
-        @Entity
-        public class Login {
+    import javax.persistence.*;
+    
+    // Une entité est une classe persistante
+    @Entity
+    public class Login {
+    
+	    @Id @GeneratedValue(strategy=GenerationType.AUTO)
+	    private int Id_Login; // clé primaire, jonction avec la table Personne2
+	    private String User;
+	    private String Pwd;
+	    private String Role;
 
-            @Id @GeneratedValue(strategy=GenerationType.AUTO)
-            private int Id_Login; // clé primaire, jonction avec la table Personne2
-            private String User;
-            private String Pwd;
-            private String Role;
-            
-            // JONCTION DES TABLES (3 techniques au choix, voir ci-dessous)
-            private Personne perso;
+	    // JONCTION DES TABLES (3 techniques au choix, voir ci-dessous)
+	    private Personne perso;
 
-            public Login() {
-                super();
-            }
-            
-            // Getters & setters
-        }
+	    public Login() {
+	    	super();
+	    }
+    
+    // Getters & setters
+    
+    }
   
 Relation 1 à 1 avec une clé étrangère :
 
-        @OneToOne(mappedBy = "login")
+    @OneToOne(mappedBy = "login")
         
 Relation 1 à 1 avec une clé primaire partagée :
 
-        @OneToOne @MapsId
+    @OneToOne @MapsId
 
 Jonction de tables :
