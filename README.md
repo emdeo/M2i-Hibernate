@@ -1,4 +1,7 @@
-# Introduction à Hibernate et au JPA
+# Introduction à Hibernate et à la JPA
+
+**Hibernate** est un framework gérnt la persistance des objets dans des BDD relationnelles.
+La **Java Persistence API** est une interface de programmation Java permettant d'organiser des données relationnelles.
 
 ## Table des matières
 1. [Créer une unité de persistance](#créer-une-unité-de-persistance)
