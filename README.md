@@ -1,7 +1,7 @@
 # Introduction à Hibernate et au JPA
 
 ## Table des matières
-1. [Créer une unité de persistance](#creer-une-unite-de-persistance)
+1. [Créer une unité de persistance](#créer-une-unité-de-persistance)
 
 ## Créer une unité de persistance
 
