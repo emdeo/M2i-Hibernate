@@ -7,7 +7,7 @@
 
 ## Créer une unité de persistance
 
-Nommer l'unité de persistance fichier XML :
+Fichier XML - nommer l'unité de persistance :
 
     <?xml version="1.0" encoding="UTF-8"?>
     <persistence version="2.1"
@@ -31,7 +31,7 @@ Nommer l'unité de persistance fichier XML :
 
     </persistence>
     
-Démarrer les échanges avec la BDD dans une classe Main :
+Classe Main - démarrer les échanges avec la BDD :
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdeliumService");
     EntityManager em = emf.createEntityManager();
@@ -40,14 +40,82 @@ Démarrer les échanges avec la BDD dans une classe Main :
 
 ## Opération READ
 
-Classe Main : récupérer une entrée de la table référencée dans l'unité de persistance :
+Classe Main - récupérer une entrée de la table référencée dans l'unité de persistance :
 
-    Personne2 per = em.find(Personne2.class, 101);
+    Personne per = em.find(Personne.class, 101);
     System.out.println(per);
     
 ## Opération CREATE
 
+Classe Personne :
+
+        import javax.persistence.*;
+        
+        // Une entité est une classe persistante
+        @Entity
+        public class Personne {
+
+            @Id @GeneratedValue(strategy = GenerationType.AUTO)
+            private int Id;
+            private String First_Name;
+            private String Last_Name;
+
+            // JONCTION DES TABLES (3 techniques au choix, voir ci-dessous)
+            private Login login ;
+            
+            // Constructeur VIDE
+            public Personne() {
+                super();
+            }
+            
+            // Getters & setters
+        }
+
 ### Techniques de jonction
-* avec une clé étrangère
-* avec une clé primaire partagée
-* avec une jonction de tables
+#### Avec une clé étrangère :
+
+        @OneToOne(cascade = CascadeType.ALL)
+        @JoinColumn(name = "col_id_login", referencedColumnName="Id_Login")
+        
+#### Avec une clé primaire partagée :
+
+        @OneToOne(mappedBy="perso", cascade = CascadeType.ALL)
+
+#### Avec une jonction de tables :
+
+
+
+Classe Login :
+
+        import javax.persistence.*;
+
+        // Une entité est une classe persistante
+        @Entity
+        public class Login {
+
+            @Id @GeneratedValue(strategy=GenerationType.AUTO)
+            private int Id_Login; // clé primaire, jonction avec la table Personne2
+            private String User;
+            private String Pwd;
+            private String Role;
+            
+            // JONCTION DES TABLES (3 techniques au choix, voir ci-dessous)
+            private Personne perso;
+
+            public Login() {
+                super();
+            }
+            
+            // Getters & setters
+        }
+  
+### Techniques de jonction
+#### Relation 1 à 1 avec une clé étrangère :
+
+        @OneToOne(mappedBy = "login")
+        
+#### Relation 1 à 1 avec une clé primaire partagée :
+
+        @OneToOne @MapsId
+
+#### Avec une jonction de tables :
