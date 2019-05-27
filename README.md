@@ -2,12 +2,12 @@
 
 ## Table des matières
 1. [Créer une unité de persistance](#créer-une-unité-de-persistance)
-2. [Opération READ](#opération-read)
-3. [Opération CREATE](#opération-create)
+2. [Opération READ (.find)](#opération-read-(.find))
+3. [Opération CREATE (.persist)](#opération-create-(.persist))
 
 ## Créer une unité de persistance
 
-Fichier XML - nommer l'unité de persistance :
+Fichier XML - configurer l'unité de persistance :
 
     <?xml version="1.0" encoding="UTF-8"?>
     <persistence version="2.1"
@@ -38,14 +38,30 @@ Classe Main - démarrer les échanges avec la BDD :
     em.getTransaction().begin(); // Signaler le début des échanges avec la BDD
     em.getTransaction().commit(); // Signaler la fin des échanges avec la BDD
 
-## Opération READ
+## Opération READ (.find)
 
 Classe Main - récupérer une entrée de la table référencée dans l'unité de persistance :
 
     Personne per = em.find(Personne.class, 101);
     System.out.println(per);
     
-## Opération CREATE
+## Opération CREATE (.persist)
+
+### Classe Main
+
+		Personne per = new Personne();
+		Login log = new Login();
+		
+		per.setFirst_Name("Carole");
+		per.setLast_Name("Charly");
+		per.setLogin(log);
+		
+		log.setUser("cacho@free.net");
+		log.setPwd("caca");
+		log.setRole("user");
+		log.setPersonne(per);
+		
+		em.persist(per);
 
 ### Classe Personne
 
