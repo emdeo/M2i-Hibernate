@@ -16,5 +16,5 @@ Démarrer les échanges avec la BDD dans une classe Main.
 
 ### Techniques de jonction
 * avec une clé étrangère
-* avec une clé primaire
+* avec une clé primaire partagée
 * avec une jonction de tables
