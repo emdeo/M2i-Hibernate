@@ -2,8 +2,8 @@
 
 ## Table des matières
 1. [Créer une unité de persistance](#créer-une-unité-de-persistance)
-2. [Opération READ (.find)](#opération-read-(.find))
-3. [Opération CREATE (.persist)](#opération-create-(.persist))
+2. [Opération READ (.find)](#opération-read)
+3. [Opération CREATE (.persist)](#opération-create)
 
 ## Créer une unité de persistance
 
