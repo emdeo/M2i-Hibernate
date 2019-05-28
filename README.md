@@ -4,7 +4,7 @@
 
 La **Java Persistence API** est une interface de programmation Java permettant d'organiser des données relationnelles.
 
-Consultez la <a href="https://github.com/emdeo/M2i-Hibernate/wiki">**page wiki**</a> pour plus de détails.
+Consultez la <a href="https://github.com/emdeo/M2i-Hibernate/wiki/Concepts-JPA-et-Hibernate">**page wiki**</a> pour plus de détails.
 
 ## Table des matières
 1. [Créer une unité de persistance](#créer-une-unité-de-persistance)
